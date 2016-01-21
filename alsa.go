@@ -162,7 +162,7 @@ func (m *Mixer) ToggleMute() error {
 	// https://bugs.launchpad.net/xfce4-volumed/+bug/883485
 	// http://askubuntu.com/questions/8425/how-to-temporarily-disable-pulseaudio
 	//
-	// Similarly, with PulseAudio, adjusting Master volume up/.down
+	// Similarly, with PulseAudio, adjusting Master volume up/down
 	// causes Master, Front and PCM all adjust erratically, with
 	// left/right channels becoming unbalanced. Solution: kill with fire.
 	if err := alsa(C.snd_mixer_selem_set_playback_switch_all(m.elem, muted)); err != nil {
