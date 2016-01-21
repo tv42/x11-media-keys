@@ -161,6 +161,10 @@ func (m *Mixer) ToggleMute() error {
 	// http://askubuntu.com/questions/339104/mute-key-mutes-master-and-headphone-speaker-alsa-channels-but-unmutes-only-ma
 	// https://bugs.launchpad.net/xfce4-volumed/+bug/883485
 	// http://askubuntu.com/questions/8425/how-to-temporarily-disable-pulseaudio
+	//
+	// Similarly, with PulseAudio, adjusting Master volume up/.down
+	// causes Master, Front and PCM all adjust erratically, with
+	// left/right channels becoming unbalanced. Solution: kill with fire.
 	if err := alsa(C.snd_mixer_selem_set_playback_switch_all(m.elem, muted)); err != nil {
 		return fmt.Errorf("alsa: cannot set mute: %v", err)
 	}
